@@ -15,7 +15,6 @@ namespace ТестКафедра
 {
     public partial class Form1 : Form
     {
-        string test_text;
         string res_path = Path.Combine(Environment.CurrentDirectory, "res");
         string test_path = Path.Combine(Environment.CurrentDirectory, "tests");
         string img_path = Path.Combine(Environment.CurrentDirectory, "img");
@@ -108,14 +107,13 @@ namespace ТестКафедра
 
                     byte[] ba = File.ReadAllBytes(Path.Combine(test_path, comboBox1.Text));
                     object ob = ConvertByteArrayToObject(ba);
-                    test_text = encr2.Decrypt(ob.ToString());
+                    string test_text = encr2.Decrypt(ob.ToString());
                     test_text = test_text.Replace("\\r\\n", Environment.NewLine);
                     get_qw(test_text);
 
                     comboBox1.Enabled = false;
                     textBox1.ReadOnly = true;
                     button2.Visible = true;
-                    button1.Text = "Далее";
                     dataGridView1.Visible = true;
 
                     for (int i = 0; i < QW.Count; i++)
